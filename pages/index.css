@@ -1,0 +1,79 @@
+@import url(../vendor/normalize.css);
+
+/*Подключаем fonts*/
+@import url(../fonts/fonts.css);
+
+/*Подключаем page*/
+@import url(../blocks/page/page.css);
+
+/*Подключаем header*/
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+/*Подключаем profile*/
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__edit__button/profile__edit-button.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
+@import url(../blocks/profile/__pencil/profile__pencil.css);
+
+/*Подключаем table*/
+@import url(../blocks/table/table.css);
+@import url(../blocks/table/__cells/table__cells.css);
+@import url(../blocks/table/__cell/table__cell.css);
+@import url(../blocks/table/__image/table__image.css);
+@import url(../blocks/table/__caption/table__caption.css);
+@import url(../blocks/table/__heart/table__heart.css);
+
+/*Подключаем footer*/
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/*Подключаем link-aim*/
+@import url(../blocks/link-aim/link-aim.css);
+
+/*Подключаем popup*/
+@import url(../blocks/popup/popup.css);
+
+/*Подключаем form*/
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__group/form__group.css);
+@import url(../blocks/form/__input/form__input.css);
+
+/*Подключаем close-icon*/
+@import url(../blocks/close-icon/close-icon.css);
+
+.box{
+    border: 1px solid rebeccapurple;
+}
+
+
+.form__label{
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    font-weight: 400;
+}
+
+.popup__close{
+    position: relative;
+    width: 502px;
+    height: 32px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px){
+    .popup__close{
+        width: 282px;
+        height: 20px;
+        margin-bottom: 16px;
+    }
+}
+

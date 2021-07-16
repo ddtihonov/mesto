@@ -1,0 +1,23 @@
+.form__input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    background-color: transparent;
+    outline: none;
+    transition: .5s;
+    font-family:  "inter", "Arial ", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+}
+
+.form__input:focus{
+    border-bottom: 2px solid rgba(26, 115, 168, .5);
+}
+
+.form__input:focus ~ .form__label, 
+.form__input:not(:placeholder-shown) ~ .form__label{
+    top: -20px;
+    font-size: 10px;
+    opacity: .5;
+}

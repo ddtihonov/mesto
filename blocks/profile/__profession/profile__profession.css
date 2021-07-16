@@ -1,0 +1,20 @@
+.profile__profession{
+    max-width: 336px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    margin: 16px 0 0;
+}
+
+@media (max-width: 768px){
+    .profile__profession{
+        margin: 16px auto 0;
+    }
+}
+
+@media (max-width: 425px){
+    .profile__profession{
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
