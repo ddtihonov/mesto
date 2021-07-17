@@ -37,43 +37,14 @@
 
 /*Подключаем popup*/
 @import url(../blocks/popup/popup.css);
-
-/*Подключаем form*/
-@import url(../blocks/form/form.css);
-@import url(../blocks/form/__title/form__title.css);
-@import url(../blocks/form/__button/form__button.css);
-@import url(../blocks/form/__group/form__group.css);
-@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/popup/__container/poup__container.css);
+@import url(../blocks/popup/_opened/popup__opened.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__group/popup__group.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__label/popup__label.css);
 
 /*Подключаем close-icon*/
 @import url(../blocks/close-icon/close-icon.css);
-
-.box{
-    border: 1px solid rebeccapurple;
-}
-
-
-.form__label{
-    position: absolute;
-    top: 0;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000;
-    font-weight: 400;
-}
-
-.popup__close{
-    position: relative;
-    width: 502px;
-    height: 32px;
-    margin-bottom: 8px;
-}
-
-@media (max-width: 768px){
-    .popup__close{
-        width: 282px;
-        height: 20px;
-        margin-bottom: 16px;
-    }
-}
-

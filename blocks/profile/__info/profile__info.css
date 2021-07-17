@@ -1,7 +1,10 @@
 .profile__info{
     max-width: 336px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto 24px;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 18px;
+    row-gap: 16px;
 }
 
 @media (max-width: 768px){
@@ -12,6 +15,6 @@
 
 @media (max-width: 425px){
     .profile__info{
-        max-width: 282px;
+        column-gap: 10px
     }
 }
