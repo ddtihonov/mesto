@@ -1,13 +1,3 @@
-//let Heart = document.querySelectorAll('.table__heart');
-
-//console.log(Heart);
-
-//function HeartChange () {
-//    Heart.src = 'images/Union.png';
-//}
-
-//Heart.addEventListener('click', HeartChange);
-
 const  ProfileEditButton = document.querySelector('.profile__edit-button');
 const CloseIcon = document.querySelector('.close-icon');
 const Popup = document.querySelector('.popup');
