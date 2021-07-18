@@ -24,4 +24,6 @@ function formSubmitHandler (evt) {
     jobInput.value = ' ';
 }
 
-formElement.addEventListener('submit', formSubmitHandler); 
+formElement.addEventListener('submit', formSubmitHandler);
+const  PopupButton = document.querySelector('.popup__button');
+PopupButton.addEventListener('click', TogglePopup);
