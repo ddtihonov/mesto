@@ -15,6 +15,6 @@
 
 @media (max-width: 425px){
     .profile__info{
-        column-gap: 10px
+        column-gap: 10px;
     }
 }

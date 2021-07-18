@@ -1,7 +1,6 @@
 .table__cells{
     width: 100%;
     list-style-type: none;
-    margin: 0;
     padding: 0;
     margin: 0 auto;
     display: grid;
