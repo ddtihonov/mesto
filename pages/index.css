@@ -25,6 +25,7 @@
 @import url(../blocks/table/__cells/table__cells.css);
 @import url(../blocks/table/__cell/table__cell.css);
 @import url(../blocks/table/__image/table__image.css);
+@import url(../blocks/table/__info/table__info.css);
 @import url(../blocks/table/__caption/table__caption.css);
 @import url(../blocks/table/__heart/table__heart.css);
 
@@ -40,11 +41,9 @@
 @import url(../blocks/popup/__container/poup__container.css);
 @import url(../blocks/popup/_opened/popup__opened.css);
 @import url(../blocks/popup/__close/popup__close.css);
-@import url(../blocks/popup/__group/popup__group.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__label/popup__label.css);
 
 /*Подключаем close-icon*/
 @import url(../blocks/close-icon/close-icon.css);

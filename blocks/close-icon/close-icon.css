@@ -1,12 +1,14 @@
 .close-icon{
     position: absolute;
     width: 32px;
-    right: 0;
-    top: 0;
+    right: -40px;
+    top: -40px;
 }
 
 @media (max-width: 768px){
     .close-icon{
         width: 20px;
+        top: -32px;
+        right: 0;
     }
 }
