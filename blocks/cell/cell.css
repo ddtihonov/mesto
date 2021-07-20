@@ -1,4 +1,4 @@
-.table__cell{
+.cell{
     display:flex;
     flex-direction: column;
     max-width: 282px;

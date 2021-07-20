@@ -1,7 +1,7 @@
-.popup__container{
+.popup__form{
     display: flex;
     flex-direction: column;
-    position: relative;
+    justify-content: center;
     max-width: 430px;
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 768px){
-    .popup__container{
+    .popup__form{
         max-width: 282px;
     }
 }

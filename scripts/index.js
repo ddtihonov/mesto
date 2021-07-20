@@ -1,29 +1,34 @@
-const  ProfileEditButton = document.querySelector('.profile__edit-button');
-const CloseIcon = document.querySelector('.close-icon');
+const  ProfileChangesButton = document.querySelector('.profile__changes-button');
+const CloseIcon = document.querySelector('.popup__close-icon');
 const Popup = document.querySelector('.popup');
+let FormElement = document.querySelector('.popup__container');
+let NameInput = document.querySelector('.input-name');
+let JobInput = document.querySelector('.input-job');
+let ProfileName = document.querySelector('.profile__name');
+let ProfileProfession = document.querySelector('.profile__profession');
+let NameInputText = NameInput.value;
+let JobInputText = JobInput.value;
 
 function TogglePopup() {
     Popup.classList.toggle('popup_opened');
+    if(document.querySelector('.popup').classList.contains('popup_opened')){
+        NameInput.value = ProfileName.textContent
+        JobInput.value = ProfileProfession.textContent
+    }
+    
 }
 
-ProfileEditButton.addEventListener('click', TogglePopup);
+ProfileChangesButton.addEventListener('click', TogglePopup);
 CloseIcon.addEventListener('click', TogglePopup);
 
-let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_job');
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
-    let nameInputText = nameInput.value;
-    let jobInputText = jobInput.value;
-    let ProfileName = document.querySelector('.profile__name');
-    let ProfileProfession = document.querySelector('.profile__profession');
-    ProfileName.textContent = nameInputText;
-    ProfileProfession.textContent = jobInputText;
-    nameInput.value = ' ';
-    jobInput.value = ' ';
+    NameInputText = NameInput.value;
+    JobInputText = JobInput.value;
+    ProfileName.textContent = NameInputText;
+    ProfileProfession.textContent = JobInputText;
+    NameInput.value = ' ';
+    JobInput.value = ' ';
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
-const  PopupButton = document.querySelector('.popup__button');
-PopupButton.addEventListener('click', TogglePopup);
+FormElement.addEventListener('submit', formSubmitHandler);

@@ -10,81 +10,79 @@
 </head>
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="images/Vector.png" alt="Место">
+        <img class="header__logo" src="images/Vector.svg" alt="Место">
     </header>
     <main class="content">
         <section class="profile">
             <img class="profile__avatar" src="images/Kusto.jpg" alt="Кусто">
             <div class="profile__info">
-                <p class="profile__name">Жак-Ив Кусто</p>
-                <button class="profile__edit-button link-aim">
-                    <img class="profile__pencil" src="images/Vector-profile.png" alt="Карандаш">
-                </button>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__changes-button link-aim" type="button" aria-label="changes-user"></button>
                 <p class="profile__profession">Исследователь океана</p>
             </div>
-            <button class="profile__add-button link-aim">
-                <img src="images/Vector-profile2.png" alt="Крестик">
-            </button>
+            <button class="profile__add-button link-aim" type="button" aria-label="add-cell" ></button>
         </section>
         <section class="table">
             <ul class="table__cells">
-                <li class="table__cell">
-                    <img class="table__image" src="images/theNileDesert.jpg" alt="Нилова пустынь">
-                    <div class="table__info">
-                        <p class="table__caption">Нилова пустынь</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell">
+                    <img class="cell__image" src="images/theNileDesert.jpg" alt="Нилова пустынь">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Нилова пустынь</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
-                <li class="table__cell" >
-                    <img class="table__image" src="images/elbrus.jpg" alt="Эльбрус">
-                    <div class="table__info">
-                        <p class="table__caption">Эльбрус</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell" >
+                    <img class="cell__image" src="images/elbrus.jpg" alt="Эльбрус">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Эльбрус</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
-                <li class="table__cell" >
-                    <img class="table__image" src="images/Kazan.jpg" alt="Казань">
-                    <div class="table__info">
-                        <p class="table__caption">Казань</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell" >
+                    <img class="cell__image" src="images/Kazan.jpg" alt="Казань">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Казань</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
-                <li class="table__cell" >
-                    <img class="table__image" src="images/moscow.jpg" alt="Москва-Сити">
-                    <div class="table__info">
-                        <p class="table__caption">Москва-Сити</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell" >
+                    <img class="cell__image" src="images/moscow.jpg" alt="Москва-Сити">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Москва-Сити</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
-                <li class="table__cell">
-                    <img class="table__image" src="images/yalta.jpg" alt="Ялта">
-                    <div class="table__info">
-                        <p class="table__caption">Ялта</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell">
+                    <img class="cell__image" src="images/yalta.jpg" alt="Ялта">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Ялта</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
-                <li class="table__cell">
-                    <img class="table__image" src="images/saint-Petersburg.jpg" alt="Санкт-Петербург">
-                    <div class="table__info">
-                        <p class="table__caption">Санкт-Петербург</p>
-                        <img class="table__heart link-aim" src="images/VectorStroke.png" alt="Сердце">
+                <li class="cell">
+                    <img class="cell__image" src="images/saint-Petersburg.jpg" alt="Санкт-Петербург">
+                    <div class="cell__info">
+                        <h2 class="cell__caption">Санкт-Петербург</h2>
+                        <button class="cell__heart" type="button" aria-label="like"></button>
                     </div>
                 </li>
             </ul>
         </section>
-        <section class="popup">
-            <form class="popup__container">
-                <img class="close-icon link-aim"  src="images/CloseIcon.png" alt="Закрывающий крест">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input popup__input_name" type="text" placeholder="Имя">
-                <input class="popup__input popup__input_job" type="text" placeholder="Род деятельности">
-                <button class="popup__button">Сохранить</button>
-            </form>
-        </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">&#169; 2021 Tikhonov Dmitry</p>
+        <p class="footer__copyright">&copy; 2021 Tikhonov Dmitry</p>
     </footer>
+    <div class="popup">
+        <div class="popup__container box">
+            <button class="popup__close-icon link-aim" type="button" aria-label="close"></button>
+            <form class="popup__form" name="name-job">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="popup__input input-name" type="text" name="name" placeholder="Имя" required>
+                <input class="popup__input input-job" type="text" name="job" placeholder="Род деятельности" required>
+                <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+        </div> 
+    </div>
     <script src="scripts/index.js"></script>
 </body>
 </html>

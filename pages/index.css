@@ -16,18 +16,20 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__edit__button/profile__edit-button.css);
+@import url(../blocks/profile/__changes-button/profile__changes-button.css);
 @import url(../blocks/profile/__profession/profile__profession.css);
 @import url(../blocks/profile/__pencil/profile__pencil.css);
 
 /*Подключаем table*/
 @import url(../blocks/table/table.css);
 @import url(../blocks/table/__cells/table__cells.css);
-@import url(../blocks/table/__cell/table__cell.css);
-@import url(../blocks/table/__image/table__image.css);
-@import url(../blocks/table/__info/table__info.css);
-@import url(../blocks/table/__caption/table__caption.css);
-@import url(../blocks/table/__heart/table__heart.css);
+
+/*Подключаем cell*/
+@import url(../blocks/cell/cell.css);
+@import url(../blocks/cell/__image/cell__image.css);
+@import url(../blocks/cell/__info/cell__info.css);
+@import url(../blocks/cell/__caption/cell__caption.css);
+@import url(../blocks/cell/__heart/cell__heart.css);
 
 /*Подключаем footer*/
 @import url(../blocks/footer/footer.css);
@@ -38,12 +40,14 @@
 
 /*Подключаем popup*/
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__container/poup__container.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form/poup__form.css);
 @import url(../blocks/popup/_opened/popup__opened.css);
-@import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
 
-/*Подключаем close-icon*/
-@import url(../blocks/close-icon/close-icon.css);
+.box{
+    border: 1px solid rebeccapurple;
+}
