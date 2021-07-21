@@ -1,9 +1,0 @@
-.profile__pencil{
-    width: 10px;
-}
-
-@media (max-width: 425px){
-    .profile__pencil{
-        width: 7px;
-    }
-}

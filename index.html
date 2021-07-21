@@ -17,10 +17,10 @@
             <img class="profile__avatar" src="images/Kusto.jpg" alt="Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__changes-button link-aim" type="button" aria-label="changes-user"></button>
+                <button class="profile__changes-button link-aim" type="button" aria-label="смена пользователя"></button>
                 <p class="profile__profession">Исследователь океана</p>
             </div>
-            <button class="profile__add-button link-aim" type="button" aria-label="add-cell" ></button>
+            <button class="profile__add-button link-aim" type="button" aria-label="добавить карточку" ></button>
         </section>
         <section class="table">
             <ul class="table__cells">
@@ -28,42 +28,42 @@
                     <img class="cell__image" src="images/theNileDesert.jpg" alt="Нилова пустынь">
                     <div class="cell__info">
                         <h2 class="cell__caption">Нилова пустынь</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <li class="cell" >
                     <img class="cell__image" src="images/elbrus.jpg" alt="Эльбрус">
                     <div class="cell__info">
                         <h2 class="cell__caption">Эльбрус</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <li class="cell" >
                     <img class="cell__image" src="images/Kazan.jpg" alt="Казань">
                     <div class="cell__info">
                         <h2 class="cell__caption">Казань</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <li class="cell" >
                     <img class="cell__image" src="images/moscow.jpg" alt="Москва-Сити">
                     <div class="cell__info">
                         <h2 class="cell__caption">Москва-Сити</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <li class="cell">
                     <img class="cell__image" src="images/yalta.jpg" alt="Ялта">
                     <div class="cell__info">
                         <h2 class="cell__caption">Ялта</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <li class="cell">
                     <img class="cell__image" src="images/saint-Petersburg.jpg" alt="Санкт-Петербург">
                     <div class="cell__info">
                         <h2 class="cell__caption">Санкт-Петербург</h2>
-                        <button class="cell__heart" type="button" aria-label="like"></button>
+                        <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
             </ul>
@@ -73,12 +73,12 @@
         <p class="footer__copyright">&copy; 2021 Tikhonov Dmitry</p>
     </footer>
     <div class="popup">
-        <div class="popup__container box">
-            <button class="popup__close-icon link-aim" type="button" aria-label="close"></button>
+        <div class="popup__container">
+            <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
             <form class="popup__form" name="name-job">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input input-name" type="text" name="name" placeholder="Имя" required>
-                <input class="popup__input input-job" type="text" name="job" placeholder="Род деятельности" required>
+                <input class="popup__input popup__input_user_name" type="text" name="name" placeholder="Имя" required>
+                <input class="popup__input popup__input_user_job" type="text" name="job" placeholder="Род деятельности" required>
                 <button class="popup__button" type="submit">Сохранить</button>
             </form>
         </div> 
