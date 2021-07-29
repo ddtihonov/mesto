@@ -1,3 +1,14 @@
+const cellTemplate = document.querySelector('.cell-template').content;
+const tableCells = document.querySelector('.table__cells');
+const popup = document.querySelector('.popup');
+const popupСhangeCell = document.querySelector('.popup-cells');
+let formElement = document.querySelector('.popup__container');
+let nameInput = document.querySelector('.popup__input_user_name');
+let jobInput = document.querySelector('.popup__input_user_job');
+let profileName = document.querySelector('.profile__name');
+let profileProfession = document.querySelector('.profile__profession');
+let nameInputText = nameInput.value;
+let jobInputText = jobInput.value;
 const initialCards = [
     {
     name: 'Архыз',
@@ -25,17 +36,14 @@ const initialCards = [
     }
 ]; 
 
-const popup = document.querySelector('.popup');
-const popupСhangeCell = document.querySelector('.popup-cells');
-let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__input_user_name');
-let jobInput = document.querySelector('.popup__input_user_job');
-let profileName = document.querySelector('.profile__name');
-let profileProfession = document.querySelector('.profile__profession');
-let nameInputText = nameInput.value;
-let jobInputText = jobInput.value;
+//создание карточек
+initialCards.forEach(function (element) {
+    const cellElement = cellTemplate.cloneNode(true);
+    cellElement.querySelector('.cell__caption').textContent = element.name;
+    cellElement.querySelector('.cell__image').src = element.link;
+    tableCells.append(cellElement);
+})
 
-initialCards.forEach
 
 // лайки
 document.querySelectorAll('.cell__heart').forEach (button => {
