@@ -25,27 +25,31 @@
         <section class="table">
             <ul class="table__cells">
                 <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/theNileDesert.jpg" alt="Нилова пустынь">
                     <div class="cell__info">
                         <h2 class="cell__caption">Нилова пустынь</h2>
                         <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
-                <li class="cell" >
+                <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/elbrus.jpg" alt="Эльбрус">
                     <div class="cell__info">
                         <h2 class="cell__caption">Эльбрус</h2>
                         <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
-                <li class="cell" >
+                <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/Kazan.jpg" alt="Казань">
                     <div class="cell__info">
                         <h2 class="cell__caption">Казань</h2>
                         <button class="cell__heart" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
-                <li class="cell" >
+                <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/moscow.jpg" alt="Москва-Сити">
                     <div class="cell__info">
                         <h2 class="cell__caption">Москва-Сити</h2>
@@ -53,6 +57,7 @@
                     </div>
                 </li>
                 <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/yalta.jpg" alt="Ялта">
                     <div class="cell__info">
                         <h2 class="cell__caption">Ялта</h2>
@@ -60,6 +65,7 @@
                     </div>
                 </li>
                 <li class="cell">
+                    <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
                     <img class="cell__image" src="images/saint-Petersburg.jpg" alt="Санкт-Петербург">
                     <div class="cell__info">
                         <h2 class="cell__caption">Санкт-Петербург</h2>
@@ -72,7 +78,7 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Tikhonov Dmitry</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup-profile">
         <div class="popup__container">
             <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
             <form class="popup__form" name="name-job">
@@ -80,6 +86,17 @@
                 <input class="popup__input popup__input_user_name" type="text" name="name" placeholder="Имя" required>
                 <input class="popup__input popup__input_user_job" type="text" name="job" placeholder="Род деятельности" required>
                 <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+        </div> 
+    </div>
+    <div class="popup popup-cells">
+        <div class="popup__container">
+            <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
+            <form class="popup__form" name="place-image">
+                <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input popup__input_place_name" type="text" name="place" placeholder="Название" required>
+                <input class="popup__input popup__input_place_image" type="text" name="image" placeholder="Ссылка на картинку" required>
+                <button class="popup__button" type="submit">Создать</button>
             </form>
         </div> 
     </div>
