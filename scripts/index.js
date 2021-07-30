@@ -2,6 +2,7 @@ const cellTemplate = document.querySelector('.cell-template').content;
 const tableCells = document.querySelector('.table__cells');
 const popup = document.querySelector('.popup');
 const popupСhangeCell = document.querySelector('.popup-cells');
+const popupImage = document.querySelector('.popup-image');
 const formElement = document.querySelector('.popup__container');
 const nameInput = document.querySelector('.popup__input_user_name');
 const jobInput = document.querySelector('.popup__input_user_job');
@@ -46,10 +47,13 @@ initialCards.forEach(function (element) {
 })
 
 // открытие popup изображения
-document.querySelectorAll('.cell__image').forEach (element => {
+document.querySelectorAll('.image-link').forEach (element => {
     element.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        evt.target.closest('.popup-image').classList.toggle('popup_opened');
+        popupImage.classList.toggle('popup_opened');
+        const image = document.querySelector('.popup__image');
+        image.src = evt.target.src
+        image.alt = evt.target.alt
+        document.querySelector('.popup__image-label').textContent = image.alt
     })});
 
 // лайки

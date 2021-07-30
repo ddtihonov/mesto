@@ -56,13 +56,16 @@
     <div class="popup popup-image">
         <div class="popup__container">
             <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
-            <img class = "popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg" alt="">
+            <figure class="popup__image-framing">
+            <img class = "popup__image" src="" alt="">
+            <figcaption class="popup__image-label"></figcaption>
+            </figure>
         </div> 
     </div>
     <template class="cell-template">
         <li class="cell">
             <button class="cell__basket link-aim" type="button" aria-label="корзина"></button>
-            <a href="#"><img class="cell__image" src="" alt=""></a>
+            <a class="image-link"  href="#"><img class="cell__image" src="" alt=""></a>
             <div class="cell__info">
                 <h2 class="cell__caption"></h2>
                 <button class="cell__heart" type="button" aria-label="лайк"></button>
