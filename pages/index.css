@@ -30,6 +30,7 @@
 @import url(../blocks/cell/__caption/cell__caption.css);
 @import url(../blocks/cell/__heart/cell__heart.css);
 @import url(../blocks/cell/__basket/cell__basket.css);
+@import url(../blocks/cell/__heart/cell__heart_black.css);
 
 /*Подключаем footer*/
 @import url(../blocks/footer/footer.css);
@@ -48,6 +49,8 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 
-.cell__heart_black{
-    background-image: url(../images/Union.svg);
+
+.popup__image{
+    max-width: 75vw;
+    max-height: 75vh;
 }

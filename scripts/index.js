@@ -2,11 +2,11 @@ const cellTemplate = document.querySelector('.cell-template').content;
 const tableCells = document.querySelector('.table__cells');
 const popup = document.querySelector('.popup');
 const popupСhangeCell = document.querySelector('.popup-cells');
-let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__input_user_name');
-let jobInput = document.querySelector('.popup__input_user_job');
-let profileName = document.querySelector('.profile__name');
-let profileProfession = document.querySelector('.profile__profession');
+const formElement = document.querySelector('.popup__container');
+const nameInput = document.querySelector('.popup__input_user_name');
+const jobInput = document.querySelector('.popup__input_user_job');
+const profileName = document.querySelector('.profile__name');
+const profileProfession = document.querySelector('.profile__profession');
 let nameInputText = nameInput.value;
 let jobInputText = jobInput.value;
 const initialCards = [
@@ -41,9 +41,16 @@ initialCards.forEach(function (element) {
     const cellElement = cellTemplate.cloneNode(true);
     cellElement.querySelector('.cell__caption').textContent = element.name;
     cellElement.querySelector('.cell__image').src = element.link;
+    cellElement.querySelector('.cell__image').alt = element.name;
     tableCells.append(cellElement);
 })
 
+// открытие popup изображения
+document.querySelectorAll('.cell__image').forEach (element => {
+    element.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        evt.target.closest('.popup-image').classList.toggle('popup_opened');
+    })});
 
 // лайки
 document.querySelectorAll('.cell__heart').forEach (button => {
@@ -79,7 +86,7 @@ document.querySelector('.profile__add-button').addEventListener('click', toggleP
 //закрытие всех popup
 document.querySelectorAll('.popup__close-icon').forEach (button => {
     button.addEventListener('click', (evt) => {
-        evt.target.closest('.popup').toggle('popup_opened');
+        evt.target.closest('.popup').classList.toggle('popup_opened');
     })});  
 
 
