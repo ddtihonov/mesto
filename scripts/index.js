@@ -4,13 +4,16 @@ const popup = document.querySelector('.popup');
 const popupСhangeCell = document.querySelector('.popup-cells');
 const popupImage = document.querySelector('.popup-image');
 const formElement = document.querySelector('.popup__container');
+const formElementCell = document.querySelector('.popup__container_cell_exchange');
 const nameInput = document.querySelector('.popup__input_user_name');
 const jobInput = document.querySelector('.popup__input_user_job');
+const plaseInput = document.querySelector('.popup__input_place_name');
+const linkInput = document.querySelector('.popup__input_place_image'); 
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 let nameInputText = nameInput.value;
 let jobInputText = jobInput.value;
-const initialCards = [
+let initialCards = [
     {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -37,14 +40,18 @@ const initialCards = [
     }
 ]; 
 
+DoCell();
 //создание карточек
-initialCards.forEach(function (element) {
-    const cellElement = cellTemplate.cloneNode(true);
-    cellElement.querySelector('.cell__caption').textContent = element.name;
-    cellElement.querySelector('.cell__image').src = element.link;
-    cellElement.querySelector('.cell__image').alt = element.name;
-    tableCells.append(cellElement);
-})
+function DoCell() {
+    initialCards.forEach(function (element) {
+        const cellElement = cellTemplate.cloneNode(true);
+        cellElement.querySelector('.cell__caption').textContent = element.name;
+        cellElement.querySelector('.cell__image').src = element.link;
+        cellElement.querySelector('.cell__image').alt = element.name;
+        tableCells.appendChild(cellElement);
+})}
+
+//console.log(cellElement)
 
 // открытие popup изображения
 document.querySelectorAll('.image-link').forEach (element => {
@@ -54,6 +61,7 @@ document.querySelectorAll('.image-link').forEach (element => {
         image.src = evt.target.src
         image.alt = evt.target.alt
         document.querySelector('.popup__image-label').textContent = image.alt
+        console.log(cell);
     })});
 
 // лайки
@@ -93,7 +101,7 @@ document.querySelectorAll('.popup__close-icon').forEach (button => {
         evt.target.closest('.popup').classList.toggle('popup_opened');
     })});  
 
-
+//форма смены пользователя
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
     nameInputText = nameInput.value;
@@ -106,3 +114,22 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+//форма добавления карточки
+function formSubmitCell (evt) {
+    evt.preventDefault();
+    initialCards.unshift({
+        name: formElementCell.querySelector('.popup__input_place_name').value,
+        link: formElementCell.querySelector('.popup__input_place_image').value
+    });
+    initialCards.splice(6, 1);
+    plaseInput.value = plaseInput.innerHTML;
+    linkInput.value = linkInput.innerHTML;
+    DoCell();
+    evt.target.closest('.popup').classList.toggle('popup_opened');
+}
+
+formElementCell.addEventListener('submit', formSubmitCell);
+
+let cell = tableCells.querySelectorAll('.cell')
+console.log(cell);
