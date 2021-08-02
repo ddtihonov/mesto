@@ -40,43 +40,36 @@ let initialCards = [
     }
 ]; 
 
-DoCell();
 //создание карточек
-function DoCell() {
-    initialCards.forEach(function (element) {
-        const cellElement = cellTemplate.cloneNode(true);
-        cellElement.querySelector('.cell__caption').textContent = element.name;
-        cellElement.querySelector('.cell__image').src = element.link;
-        cellElement.querySelector('.cell__image').alt = element.name;
-        tableCells.appendChild(cellElement);
-})}
-
-//console.log(cellElement)
+initialCards.forEach(function (element) {
+    const cellElement = cellTemplate.cloneNode(true);
+    cellElement.querySelector('.cell__caption').textContent = element.name;
+    cellElement.querySelector('.cell__image').src = element.link;
+    cellElement.querySelector('.cell__image').alt = element.name;
+    cellElement.querySelector('.cell__heart').addEventListener('click', like);
+    cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
+    cellElement.querySelector('.image-link').addEventListener('click', openPopupImage);
+    tableCells.append(cellElement);
+})
 
 // открытие popup изображения
-document.querySelectorAll('.image-link').forEach (element => {
-    element.addEventListener('click', (evt) => {
-        popupImage.classList.toggle('popup_opened');
-        const image = document.querySelector('.popup__image');
-        image.src = evt.target.src
-        image.alt = evt.target.alt
-        document.querySelector('.popup__image-label').textContent = image.alt
-        console.log(cell);
-    })});
+function openPopupImage (evt) {
+    popupImage.classList.toggle('popup_opened');
+    const image = document.querySelector('.popup__image');
+    image.src = evt.target.src
+    image.alt = evt.target.alt
+    document.querySelector('.popup__image-label').textContent = image.alt
+};
 
 // лайки
-document.querySelectorAll('.cell__heart').forEach (button => {
-    button.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        evt.target.classList.toggle('cell__heart_black');
-    })});
+function like (evt) {
+    evt.target.classList.toggle('cell__heart_black');
+};
 
 // удаление карточек    
-document.querySelectorAll('.cell__basket').forEach (button => {
-    button.addEventListener('click', (evt) =>{
-        evt.preventDefault();
-        evt.target.parentElement.remove();
-    })});    
+function deleteCell (evt){
+    evt.target.parentElement.remove();
+};    
 
 // открытие popup данные пользователя
 function togglePopup() {
@@ -114,7 +107,6 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
-
 //форма добавления карточки
 function formSubmitCell (evt) {
     evt.preventDefault();
@@ -122,14 +114,17 @@ function formSubmitCell (evt) {
         name: formElementCell.querySelector('.popup__input_place_name').value,
         link: formElementCell.querySelector('.popup__input_place_image').value
     });
-    initialCards.splice(6, 1);
-    plaseInput.value = plaseInput.innerHTML;
-    linkInput.value = linkInput.innerHTML;
-    DoCell();
+    const cellElement = cellTemplate.cloneNode(true);
+        cellElement.querySelector('.cell__caption').textContent = formElementCell.querySelector('.popup__input_place_name').value;
+        cellElement.querySelector('.cell__image').src = formElementCell.querySelector('.popup__input_place_image').value;
+        cellElement.querySelector('.cell__image').alt = formElementCell.querySelector('.popup__input_place_name').value;
+        cellElement.querySelector('.cell__heart').addEventListener('click', like);
+        cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
+        cellElement.querySelector('.image-link').addEventListener('click', openPopupImage);
+        tableCells.prepend(cellElement);
+    plaseInput.value = plaseInput.innerText;
+    linkInput.value = linkInput.innerText;
     evt.target.closest('.popup').classList.toggle('popup_opened');
-}
+};
 
 formElementCell.addEventListener('submit', formSubmitCell);
-
-let cell = tableCells.querySelectorAll('.cell')
-console.log(cell);
