@@ -41,7 +41,11 @@ const initialCards = [
 ]; 
 
 //создание карточек
-initialCards.forEach(function (element) {
+doCell(...initialCards)
+
+function doCell(...element){
+
+element.forEach(function (element) {
     const cellElement = cellTemplate.cloneNode(true);
     cellElement.querySelector('.cell__caption').textContent = element.name;
     cellElement.querySelector('.cell__image').src = element.link;
@@ -49,8 +53,8 @@ initialCards.forEach(function (element) {
     cellElement.querySelector('.cell__heart').addEventListener('click', like);
     cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
     cellElement.querySelector('.image-link').addEventListener('click', fillPopupImage);
-    tableCells.append(cellElement);
-})
+    tableCells.prepend(cellElement);
+})}
 
 // данные popup изображения
 function fillPopupImage (evt) {
@@ -112,18 +116,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 //форма добавления карточки
 function formSubmitCell (evt) {
     evt.preventDefault();
-    initialCards.unshift({
+    doCell({
         name: formElementCell.querySelector('.popup__input_place_name').value,
         link: formElementCell.querySelector('.popup__input_place_image').value
     });
-    const cellElement = cellTemplate.cloneNode(true);
-        cellElement.querySelector('.cell__caption').textContent = formElementCell.querySelector('.popup__input_place_name').value;
-        cellElement.querySelector('.cell__image').src = formElementCell.querySelector('.popup__input_place_image').value;
-        cellElement.querySelector('.cell__image').alt = formElementCell.querySelector('.popup__input_place_name').value;
-        cellElement.querySelector('.cell__heart').addEventListener('click', like);
-        cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
-        cellElement.querySelector('.image-link').addEventListener('click', fillPopupImage);
-        tableCells.prepend(cellElement);
     plaseInput.value = plaseInput.textContent;
     linkInput.value = linkInput.textContent;
     closePopup(evt);
