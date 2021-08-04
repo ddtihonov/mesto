@@ -11,9 +11,9 @@ const plaseInput = document.querySelector('.popup__input_place_name');
 const linkInput = document.querySelector('.popup__input_place_image'); 
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
-let nameInputText = nameInput.value;
-let jobInputText = jobInput.value;
-let initialCards = [
+const nameInputText = nameInput.value;
+const jobInputText = jobInput.value;
+const initialCards = [
     {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -48,19 +48,30 @@ initialCards.forEach(function (element) {
     cellElement.querySelector('.cell__image').alt = element.name;
     cellElement.querySelector('.cell__heart').addEventListener('click', like);
     cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
-    cellElement.querySelector('.image-link').addEventListener('click', openPopupImage);
+    cellElement.querySelector('.image-link').addEventListener('click', fillPopupImage);
     tableCells.append(cellElement);
 })
 
-// открытие popup изображения
-function openPopupImage (evt) {
-    popupImage.classList.toggle('popup_opened');
+// данные popup изображения
+function fillPopupImage (evt) {
     const image = document.querySelector('.popup__image');
     image.src = evt.target.src
     image.alt = evt.target.alt
     document.querySelector('.popup__image-label').textContent = image.alt
+    openPopup (popupImage);
 };
 
+// данные popup смены пользователя
+function outputUser() {
+    nameInput.value = profileName.textContent
+    jobInput.value = profileProfession.textContent
+    openPopup(popup);
+}
+
+// данные popup добавления карточки
+function outpuCell() {
+    openPopup(popupСhangeCell);
+}
 // лайки
 function like (evt) {
     evt.target.classList.toggle('cell__heart_black');
@@ -71,42 +82,33 @@ function deleteCell (evt){
     evt.target.parentElement.remove();
 };    
 
-// открытие popup данные пользователя
-function togglePopup() {
-    popup.classList.toggle('popup_opened');
-    if(popup.classList.contains('popup_opened')){
-        nameInput.value = profileName.textContent
-        jobInput.value = profileProfession.textContent
-    }
+// отурытие всех popup
+function openPopup (element) {
+    element.classList.add('popup_opened');
 }
 
-// отурытие popup новая карточка
-function togglePopupCell () {
-    popupСhangeCell.classList.toggle('popup_opened');
-}
-
-document.querySelector('.profile__changes-button').addEventListener('click', togglePopup);
-document.querySelector('.profile__add-button').addEventListener('click', togglePopupCell);
+document.querySelector('.profile__changes-button').addEventListener('click', outputUser);
+document.querySelector('.profile__add-button').addEventListener('click', outpuCell);
 
 //закрытие всех popup
+function closePopup(evt) {
+    evt.target.closest('.popup').classList.remove('popup_opened');
+}
+
 document.querySelectorAll('.popup__close-icon').forEach (button => {
-    button.addEventListener('click', (evt) => {
-        evt.target.closest('.popup').classList.toggle('popup_opened');
-    })});  
+    button.addEventListener('click', closePopup);
+})
 
 //форма смены пользователя
 function formSubmitHandler (evt) {
-    evt.preventDefault(); 
-    nameInputText = nameInput.value;
-    jobInputText = jobInput.value;
-    profileName.textContent = nameInputText;
-    profileProfession.textContent = jobInputText;
-    nameInput.value = ' ';
-    jobInput.value = ' ';
-    togglePopup();
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileProfession.textContent = jobInput.value;
+    closePopup(evt);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+
 //форма добавления карточки
 function formSubmitCell (evt) {
     evt.preventDefault();
@@ -120,11 +122,11 @@ function formSubmitCell (evt) {
         cellElement.querySelector('.cell__image').alt = formElementCell.querySelector('.popup__input_place_name').value;
         cellElement.querySelector('.cell__heart').addEventListener('click', like);
         cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
-        cellElement.querySelector('.image-link').addEventListener('click', openPopupImage);
+        cellElement.querySelector('.image-link').addEventListener('click', fillPopupImage);
         tableCells.prepend(cellElement);
-    plaseInput.value = plaseInput.innerText;
-    linkInput.value = linkInput.innerText;
-    evt.target.closest('.popup').classList.toggle('popup_opened');
+    plaseInput.value = plaseInput.textContent;
+    linkInput.value = linkInput.textContent;
+    closePopup(evt);
 };
 
 formElementCell.addEventListener('submit', formSubmitCell);
