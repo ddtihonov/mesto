@@ -40,21 +40,29 @@ const initialCards = [
     }
 ]; 
 
-//создание карточек
+
 doCell(...initialCards)
 
 function doCell(...element){
+element.forEach(addCard)
+}
 
-element.forEach(function (element) {
+//создание карточек
+function createCard(card) {
     const cellElement = cellTemplate.cloneNode(true);
-    cellElement.querySelector('.cell__caption').textContent = element.name;
-    cellElement.querySelector('.cell__image').src = element.link;
-    cellElement.querySelector('.cell__image').alt = element.name;
+    cellElement.querySelector('.cell__caption').textContent = card.name;
+    cellElement.querySelector('.cell__image').src = card.link;
+    cellElement.querySelector('.cell__image').alt = card.name;
     cellElement.querySelector('.cell__heart').addEventListener('click', like);
     cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
     cellElement.querySelector('.image-link').addEventListener('click', fillPopupImage);
-    tableCells.prepend(cellElement);
-})}
+    return cellElement;
+}
+
+//добавление карточек
+function addCard(cellElement) {
+    tableCells.prepend(createCard(cellElement));
+}
 
 // данные popup изображения
 function fillPopupImage (evt) {
