@@ -94,10 +94,21 @@ function deleteCell (evt){
     evt.target.parentElement.remove();
 };    
 
-// отурытие всех popup
+// открытие всех popup
 function openPopup (element) {
     element.classList.add('popup_opened');
+    listenerEsc (element);
 }
+
+// обработчик Escape
+function listenerEsc (element) {
+    document.addEventListener('keydown', evt =>{
+        const key = evt.key;
+        if (key === "Escape"){
+            console.log(element);
+            element.classList.remove('popup_opened');
+    }}); 
+    }
 
 document.querySelector('.profile__changes-button').addEventListener('click', outputUser);
 document.querySelector('.profile__add-button').addEventListener('click', outpuCell);
