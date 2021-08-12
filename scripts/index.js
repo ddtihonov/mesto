@@ -3,16 +3,19 @@ const tableCells = document.querySelector('.table__cells');
 const popup = document.querySelector('.popup');
 const popupСhangeCell = document.querySelector('.popup-cells');
 const popupImage = document.querySelector('.popup-image');
-const formElement = document.querySelector('.popup__container');
+const formElementProfile = document.querySelector('.popup__container');//
 const formElementCell = document.querySelector('.popup__container_cell_exchange');
-const nameInput = document.querySelector('.popup__input_user_name');
-const jobInput = document.querySelector('.popup__input_user_job');
-const plaseInput = document.querySelector('.popup__input_place_name');
-const linkInput = document.querySelector('.popup__input_place_image'); 
+const formJob = document.forms.user;
+const formImage = document.forms.card;
+const nameInput = formJob.elements.name;
+const jobInput = formJob.elements.job;
+const plaseInput = formImage.elements.title;
+const linkInput = formImage.elements.image;
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const nameInputText = nameInput.value;
 const jobInputText = jobInput.value;
+
 const initialCards = [
     {
     name: 'Архыз',
@@ -102,20 +105,20 @@ function openPopup (element) {
 
 // обработчик Escape
 function listenerEsc (element) {
-    document.addEventListener('keydown', evt =>{
+    document.addEventListener('keydown', function (evt){
         const key = evt.key;
         if (key === "Escape"){
             console.log(element);
             element.classList.remove('popup_opened');
     }}); 
-    }
+}
 
 document.querySelector('.profile__changes-button').addEventListener('click', outputUser);
 document.querySelector('.profile__add-button').addEventListener('click', outpuCell);
 
 //закрытие всех popup
-function closePopup(evt) {
-    evt.target.closest('.popup').classList.remove('popup_opened');
+function closePopup(element) {
+    element.target.closest('.popup').classList.remove('popup_opened');
 }
 
 document.querySelectorAll('.popup__close-icon').forEach (button => {
@@ -130,14 +133,14 @@ function formSubmitHandler (evt) {
     closePopup(evt);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElementProfile.addEventListener('submit', formSubmitHandler);
 
 //форма добавления карточки
 function formSubmitCell (evt) {
     evt.preventDefault();
     doCell({
-        name: formElementCell.querySelector('.popup__input_place_name').value,
-        link: formElementCell.querySelector('.popup__input_place_image').value
+        name: formElementCell.querySelector('.form__input_place_name').value,
+        link: formElementCell.querySelector('.form__input_place_image').value
     });
     plaseInput.value = plaseInput.textContent;
     linkInput.value = linkInput.textContent;
