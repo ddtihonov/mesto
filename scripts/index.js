@@ -3,46 +3,16 @@ const tableCells = document.querySelector('.table__cells');
 const popup = document.querySelector('.popup');
 const popupСhangeCell = document.querySelector('.popup-cells');
 const popupImage = document.querySelector('.popup-image');
-const formElementProfile = document.querySelector('.popup__container');//
-const formElementCell = document.querySelector('.popup__container_cell_exchange');
-const formJob = document.forms.user;
-const formImage = document.forms.card;
-const nameInput = formJob.elements.name;
-const jobInput = formJob.elements.job;
-const plaseInput = formImage.elements.title;
-const linkInput = formImage.elements.image;
+const formUser = document.forms.user;
+const formCard = document.forms.card;
+const nameInput = formUser.elements.name;
+const jobInput = formUser.elements.job;
+const plaseInput = formCard.elements.title;
+const linkInput = formCard.elements.image;
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const nameInputText = nameInput.value;
 const jobInputText = jobInput.value;
-
-const initialCards = [
-    {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-]; 
-
 
 doCell(...initialCards)
 
@@ -74,7 +44,7 @@ function fillPopupImage (evt) {
     image.alt = evt.target.alt
     document.querySelector('.popup__image-label').textContent = image.alt
     openPopup (popupImage);
-};
+}
 
 // данные popup смены пользователя
 function outputUser() {
@@ -90,16 +60,21 @@ function outpuCell() {
 // лайки
 function like (evt) {
     evt.target.classList.toggle('cell__heart_black');
-};
+}
 
 // удаление карточек    
 function deleteCell (evt){
     evt.target.parentElement.remove();
-};    
+}    
 
 // открытие всех popup
 function openPopup (element) {
     element.classList.add('popup_opened');
+    element.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup')) {
+            exchangeEvent(evt);
+        }
+    }); 
     listenerEsc (element);
 }
 
@@ -108,8 +83,7 @@ function listenerEsc (element) {
     document.addEventListener('keydown', function (evt){
         const key = evt.key;
         if (key === "Escape"){
-            console.log(element);
-            element.classList.remove('popup_opened');
+            closePopup(element);
     }}); 
 }
 
@@ -118,33 +92,50 @@ document.querySelector('.profile__add-button').addEventListener('click', outpuCe
 
 //закрытие всех popup
 function closePopup(element) {
-    element.target.closest('.popup').classList.remove('popup_opened');
+    element.classList.remove('popup_opened');
+    document.removeEventListener('keydown', function (evt){
+        const key = evt.key;
+        if (key === "Escape"){
+            closePopup(element);
+    element.removeEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup')) {
+            exchangeEvent(evt);
+        }
+    });  
+}}); 
 }
 
 document.querySelectorAll('.popup__close-icon').forEach (button => {
-    button.addEventListener('click', closePopup);
-})
+    button.addEventListener('click', exchangeEvent);
+});
+
+// событие = элемент
+function exchangeEvent (evt){
+    const element = evt.target.closest('.popup')
+    closePopup(element);
+}
 
 //форма смены пользователя
 function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileProfession.textContent = jobInput.value;
-    closePopup(evt);
+    exchangeEvent(evt);
 }
 
-formElementProfile.addEventListener('submit', formSubmitHandler);
+formUser.addEventListener('submit', formSubmitHandler);
 
 //форма добавления карточки
 function formSubmitCell (evt) {
     evt.preventDefault();
+    const element = evt.target.closest('.popup')
     doCell({
-        name: formElementCell.querySelector('.form__input_place_name').value,
-        link: formElementCell.querySelector('.form__input_place_image').value
+        name: formCard.querySelector('.form__input_place_name').value,
+        link: formCard.querySelector('.form__input_place_image').value
     });
     plaseInput.value = plaseInput.textContent;
     linkInput.value = linkInput.textContent;
-    closePopup(evt);
-};
+    exchangeEvent(evt);
+}
 
-formElementCell.addEventListener('submit', formSubmitCell);
+formCard.addEventListener('submit', formSubmitCell);

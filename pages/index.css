@@ -54,21 +54,7 @@
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__label/form__label.css);
-
-
-.form__input-error{
-    max-width: 358px;
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 400;
-    color: black;
-}
-
-.form__input-error_active{
-    color: #ff0000;
-}
-
-
-.form__input_type_error {
-    border-bottom: 1px solid #ff0000;
-}
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
+@import url(../blocks/form/__input-error/_active/form__input-error_active.css);

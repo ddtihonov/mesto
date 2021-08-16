@@ -37,11 +37,11 @@
             <form class="form" name="user" novalidate>
                 <h2 class="form__title">Редактировать профиль</h2>
                 <label class="form__label">
-                    <input class="form__input form__input_user_name" type="text" name="name" id="name-input" placeholder="Имя" required minlength="2" maxlength="40">
+                    <input class="form__input form__input_user_name" type="text" name="name" id="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
                     <span class="form__input-error name-input-error"></span>
                 </label>
                 <label class="form__label">
-                    <input class="form__input form__input_user_job" type="text" name="job" id="job-input" placeholder="Род деятельности" required minlength="2" maxlength="200">
+                    <input class="form__input form__input_user_job" type="text" name="job" id="job-input" placeholder="Род деятельности"  minlength="2" maxlength="200" required>
                     <span class="form__input-error job-input-error"></span>
                 </label>
                 <button class="form__button" type="submit">Сохранить</button>
@@ -54,12 +54,12 @@
             <form class="form" name="card" novalidate>
                 <h2 class="form__title">Новое место</h2>
                 <label class="form__label">
-                    <input class="form__input form__input_place_name" type="text" name="title" id="title-input" placeholder="Название" required minlength="2" maxlength="30">
-                    <span class="form__input-error title-input-error">Вася</span>
+                    <input class="form__input form__input_place_name" type="text" name="title" id="title-input" placeholder="Название" minlength="2" maxlength="30" required >
+                    <span class="form__input-error title-input-error"></span>
                 </label>
                 <label class="form__label">
                     <input class="form__input form__input_place_image" type="url" name="image" id="image-input" placeholder="Ссылка на картинку" required>
-                    <span class="form__input-error image-input-error">Грузщик</span>
+                    <span class="form__input-error image-input-error"></span>
                 </label>
                 <button class="form__button" type="submit">Создать</button>
             </form>
@@ -84,6 +84,7 @@
             </div>
         </li>
     </template>
+    <script src="scripts/initial-cards.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/validate.js"></script>
 </body>

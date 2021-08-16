@@ -1,6 +1,7 @@
 const form = document.querySelector('.form');
 const formInput = form.querySelector('.form__input');
 const formError = form.querySelector(`.${formInput.id}-error`);
+const formList = Array.from(document.querySelectorAll('.form'));
 
 //Ругаемся при invalid
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -20,8 +21,6 @@ const hideInputError = (formElement, inputElement) => {
 
 //Проверяем валидность input
 const checkInputValidity = (formElement, inputElement) => {
-    console.log(inputElement);
-    console.log(formElement); 
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -32,22 +31,38 @@ const checkInputValidity = (formElement, inputElement) => {
 //Ищем input в форме
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+    const buttonElement = formElement.querySelector('.form__button');
+    toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
         checkInputValidity(formElement, inputElement);
+        toggleButtonState(inputList, buttonElement);
         });
     });
 };
 
 //Ищем нужную форму
-function enableValidation(){
-    const formList = Array.from(document.querySelectorAll('.form'));
-    formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-});
+function enableValidation(element){
+    element.forEach((formElement) => {
     setEventListeners(formElement);
 }); 
 }
 
-enableValidation ()
+enableValidation (formList)
+
+function hasInvalidInput (inputList) {
+    return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+}); 
+}
+
+// поведение кнопки valid-invalid
+function toggleButtonState (inputList, buttonElement) {
+    if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('form__button_disabled');
+    buttonElement.setAttribute('disabled', false)
+} else {
+    buttonElement.classList.remove('form__button_disabled');
+    buttonElement.removeAttribute('disabled', true)
+} 
+}
