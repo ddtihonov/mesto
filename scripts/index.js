@@ -17,8 +17,6 @@ const jobInputText = jobInput.value;
 const image = document.querySelector('.popup__image');
 const key = "Escape";
 
-console.log(formCardButton)
-
 doCell(...initialCards)
 
 function doCell(...element){
