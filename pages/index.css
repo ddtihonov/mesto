@@ -31,6 +31,7 @@
 @import url(../blocks/cell/__heart/cell__heart.css);
 @import url(../blocks/cell/__basket/cell__basket.css);
 @import url(../blocks/cell/__heart/cell__heart_black.css);
+@import url(../blocks/cell/__image-link/cell__image-link.css);
 
 /*Подключаем footer*/
 @import url(../blocks/footer/footer.css);

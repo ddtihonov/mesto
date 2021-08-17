@@ -1,8 +1,3 @@
-const form = document.querySelector('.form');
-const formInput = form.querySelector('.form__input');
-const formError = form.querySelector(`.${formInput.id}-error`);
-const formList = Array.from(document.querySelectorAll('.form'));
-
 //Ругаемся при invalid
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -42,13 +37,14 @@ const setEventListeners = (formElement) => {
 };
 
 //Ищем нужную форму
-function enableValidation(element){
-    element.forEach((formElement) => {
+function enableValidation(){
+    const formList = Array.from(document.querySelectorAll('.form')); 
+    formList.forEach((formElement) => {
     setEventListeners(formElement);
 }); 
 }
 
-enableValidation (formList)
+enableValidation ()
 
 function hasInvalidInput (inputList) {
     return inputList.some((inputElement) => {
