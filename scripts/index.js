@@ -1,6 +1,6 @@
 const cellTemplate = document.querySelector('.cell-template').content;
 const tableCells = document.querySelector('.table__cells');
-const popup = document.querySelector('.popup-profile');
+const popupProfile = document.querySelector('.popup-profile');
 const popupСhangeCell = document.querySelector('.popup-cells');
 const popupImage = document.querySelector('.popup-image');
 const formUser = document.forms.user;
@@ -53,7 +53,7 @@ function fillPopupImage (evt) {
 function outputUser() {
     nameInput.value = profileName.textContent
     jobInput.value = profileProfession.textContent
-    openPopup(popup);
+    openPopup(popupProfile);
 }
 
 // данные popup добавления карточки
@@ -113,8 +113,7 @@ function submitProfileForm (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileProfession.textContent = jobInput.value;
-    const elementClose = evt.target.closest('.popup')
-    closePopup(elementClose);
+    closePopup(popupProfile);
 }
 
 formUser.addEventListener('submit', submitProfileForm);
@@ -128,10 +127,9 @@ function submitCardForm (evt) {
     });
     plaseInput.value = plaseInput.textContent;
     linkInput.value = linkInput.textContent;
-    const elementClose = evt.target.closest('.popup')
     formCardButton.classList.add('form__button_disabled');
     formCardButton.setAttribute('disabled', false)
-    closePopup(elementClose);
+    closePopup(popupСhangeCell);
 }
 
 formCard.addEventListener('submit', submitCardForm);
