@@ -1,4 +1,5 @@
-const cellTemplate = document.querySelector('.cell-template').content;
+import {initialCards} from './initial-cards.js';
+import Card from './Card.js';
 const tableCells = document.querySelector('.table__cells');
 const popupProfile = document.querySelector('.popup-profile');
 const popupСhangeCell = document.querySelector('.popup-cells');
@@ -20,33 +21,16 @@ const key = "Escape";
 doCell(...initialCards)
 
 function doCell(...element){
-element.forEach(addCard)
-}
-
-//создание карточек
-function createCard(card) {
-    const cellElement = cellTemplate.cloneNode(true);
-    const cellElementImage = cellElement.querySelector('.cell__image')
-    cellElement.querySelector('.cell__caption').textContent = card.name;
-    cellElementImage.src = card.link;
-    cellElementImage.alt = card.name;
-    cellElement.querySelector('.cell__heart').addEventListener('click', like);
-    cellElement.querySelector('.cell__basket').addEventListener('click', deleteCell);
-    cellElement.querySelector('.cell__image-link').addEventListener('click', fillPopupImage);
-    return cellElement;
+    element.forEach((element) => {
+        const card = new Card(element.name, element.link);
+        const cardElement = card.generateCard();
+        document.querySelector('.table__cells').prepend(cardElement);
+    }); 
 }
 
 //добавление карточек
 function addCard(cellElement) {
     tableCells.prepend(createCard(cellElement));
-}
-
-// данные popup изображения
-function fillPopupImage (evt) {
-    image.src = evt.target.src
-    image.alt = evt.target.alt
-    document.querySelector('.popup__image-label').textContent = image.alt
-    openPopup (popupImage);
 }
 
 // данные popup смены пользователя
@@ -59,19 +43,12 @@ function outputUser() {
 // данные popup добавления карточки
 function outpuCell() {
     openPopup(popupСhangeCell);
-}
-// лайки
-function like (evt) {
-    evt.target.classList.toggle('cell__heart_black');
-}
-
-// удаление карточек    
-function deleteCell (evt){
-    evt.target.closest('.cell').remove();
-}    
+} 
 
 // открытие всех popup
 function openPopup (element) {
+    console.log(image.src)
+    console.log(image.alt)
     element.classList.add('popup_opened');
     document.addEventListener('keydown', closeByEsc);
     element.addEventListener('click', closeOverlay);
