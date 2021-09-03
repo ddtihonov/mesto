@@ -1,5 +1,4 @@
-const popupImage = document.querySelector('.popup-image');
-const image = document.querySelector('.popup__image');
+//import openPopup from './index.js';
 export default class Card {
     constructor(name, link) {
     this._name = name;
@@ -35,12 +34,16 @@ _deleteCell (){
 }    
 
 _fillPopupImage () {
+    const popupImage = document.querySelector('.popup-image');
+    const image = document.querySelector('.popup__image');
     image.src = this._link 
     image.alt = this._name
     popupImage.querySelector('.popup__image-label').textContent = this._name
-    console.log(popupImage)
-    //popupImage.classList.add('popup_opened');
-    openPopup (popupImage);
+
+    /*function openPopup () {
+        popupImage.classList.add('popup_opened');
+    }*/
+    openPopup(popupImage);
 }
 
 _setEventListeners() {
@@ -57,11 +60,3 @@ _setEventListeners() {
         this._fillPopupImage();
         });
 }}
-
-function openPopup (element) {
-    console.log(image.src)
-    console.log(image.alt)
-    element.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEsc);
-    element.addEventListener('click', closeOverlay);
-}

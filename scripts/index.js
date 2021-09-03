@@ -1,9 +1,12 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
+import FormValidator from './FormValidator.js'
+//import {popupImage} from './Card.js';
+const form = document.querySelectorAll('.form');
 const tableCells = document.querySelector('.table__cells');
 const popupProfile = document.querySelector('.popup-profile');
 const popupСhangeCell = document.querySelector('.popup-cells');
-const popupImage = document.querySelector('.popup-image');
+//export const popupImage = document.querySelector('.popup-image');
 const formUser = document.forms.user;
 const formCard = document.forms.card;
 const formCardButton = formCard.querySelector('.form__button');
@@ -13,8 +16,6 @@ const plaseInput = formCard.elements.title;
 const linkInput = formCard.elements.image;
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
-const nameInputText = nameInput.value;
-const jobInputText = jobInput.value;
 const image = document.querySelector('.popup__image');
 const key = "Escape";
 
@@ -46,9 +47,7 @@ function outpuCell() {
 } 
 
 // открытие всех popup
-function openPopup (element) {
-    console.log(image.src)
-    console.log(image.alt)
+export default function openPopup (element) {
     element.classList.add('popup_opened');
     document.addEventListener('keydown', closeByEsc);
     element.addEventListener('click', closeOverlay);
@@ -110,3 +109,14 @@ function submitCardForm (evt) {
 }
 
 formCard.addEventListener('submit', submitCardForm);
+
+form.forEach((formElement) => {
+    const objectFormValidator = new FormValidator({
+    formInputSelector: '.form__input',
+    formButtonSelector: '.form__button',
+    formButtonDisabled: 'form__button_disabled',
+    formInputTypeError: 'form__input_type_error',
+    formInputErrorActive: 'form__input-error_active' 
+    }, formElement)
+    objectFormValidator.enableValidation()
+}) 
