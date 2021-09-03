@@ -1,12 +1,10 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js'
-//import {popupImage} from './Card.js';
 const form = document.querySelectorAll('.form');
 const tableCells = document.querySelector('.table__cells');
 const popupProfile = document.querySelector('.popup-profile');
 const popupСhangeCell = document.querySelector('.popup-cells');
-//export const popupImage = document.querySelector('.popup-image');
 const formUser = document.forms.user;
 const formCard = document.forms.card;
 const formCardButton = formCard.querySelector('.form__button');
@@ -25,14 +23,10 @@ function doCell(...element){
     element.forEach((element) => {
         const card = new Card(element.name, element.link);
         const cardElement = card.generateCard();
-        document.querySelector('.table__cells').prepend(cardElement);
+        tableCells.prepend(cardElement);
     }); 
 }
 
-//добавление карточек
-function addCard(cellElement) {
-    tableCells.prepend(createCard(cellElement));
-}
 
 // данные popup смены пользователя
 function outputUser() {

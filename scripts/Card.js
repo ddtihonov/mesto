@@ -1,4 +1,4 @@
-//import openPopup from './index.js';
+import openPopup from './index.js';
 export default class Card {
     constructor(name, link) {
     this._name = name;
@@ -39,10 +39,6 @@ _fillPopupImage () {
     image.src = this._link 
     image.alt = this._name
     popupImage.querySelector('.popup__image-label').textContent = this._name
-
-    /*function openPopup () {
-        popupImage.classList.add('popup_opened');
-    }*/
     openPopup(popupImage);
 }
 

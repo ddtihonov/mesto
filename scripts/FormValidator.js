@@ -10,9 +10,6 @@ export default class FormValidator {
 
 
 enableValidation(){
-    //this._formElement.addEventListener('submit', (evt) => {
-        //evt.preventDefault();
-    //})
     this._setInputListeners();
 }; 
 
@@ -49,7 +46,6 @@ _hideInputError = (inputElement) => {
 //Ругаемся при invalid
 _showInputError = (inputElement, errorMessage) => {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-    console.log(errorElement)
     inputElement.classList.add(this._formInputTypeError);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._formInputErrorActive);
