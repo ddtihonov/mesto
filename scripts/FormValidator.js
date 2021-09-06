@@ -53,7 +53,7 @@ _showInputError = (inputElement, errorMessage) => {
 
 // поведение кнопки valid-invalid
 _toggleButtonState (inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(inputList)){
     buttonElement.classList.add(this._formButtonDisabled);
     buttonElement.setAttribute('disabled', false)
 } else {
@@ -68,8 +68,9 @@ _hasInvalidInput (inputList) {
 }); 
 }
 
-disableSubmitButton (){
-    formCardButton.classList.add(this._formButtonDisabled);
-    formCardButton.setAttribute('disabled', false)
+
+disableSubmitButton (buttonElement){
+    buttonElement.classList.add(this._formButtonDisabled);
+    buttonElement.setAttribute('disabled', false)
 }
 }

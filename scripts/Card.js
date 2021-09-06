@@ -1,16 +1,17 @@
 const popupImage = document.querySelector('.popup-image');
 const image = document.querySelector('.popup__image');
 const imageLabel =  popupImage.querySelector('.popup__image-label')
-import openPopup from './index.js';
+import Popup from '../utils/utils.js';
 export default class Card {
-    constructor(name, link) {
-    this._name = name;
-    this._link = link;
+    constructor(element, cardSelector) {
+    this._name = element.name;
+    this._link = element.link;
+    this._cardSelector = cardSelector
 }
 
 _getTemplate() {
     const cardElement = document
-        .querySelector('.cell-template')
+        .querySelector(this._cardSelector)
         .content
         .querySelector('.cell')
         .cloneNode(true);
@@ -21,8 +22,9 @@ _getTemplate() {
 generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.cell__image').src = this._link;
-    this._element.querySelector('.cell__image').alt = this._name;
+    const cellImage = this._element.querySelector('.cell__image');
+    cellImage.src = this._link;
+    cellImage.alt = this._name;
     this._element.querySelector('.cell__caption').textContent = this._name;
     
     return this._element;
@@ -40,8 +42,12 @@ _fillPopupImage () {
     image.src = this._link 
     image.alt = this._name
     imageLabel.textContent = this._name
-    openPopup(popupImage);
-}
+
+    const popup = new Popup({
+        popupSelector: popupImage
+    });
+    popup.openPopup();
+    }
 
 _setEventListeners() {
 
