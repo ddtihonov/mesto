@@ -1,10 +1,10 @@
 export default class FormValidator {
-    constructor(objectFormValidator, formElement) {
-        this._formInputSelector = objectFormValidator.formInputSelector
-        this._formButtonSelector = objectFormValidator.formButtonSelector
-        this._formButtonDisabled = objectFormValidator.formButtonDisabled
-        this._formInputTypeError = objectFormValidator.formInputTypeError
-        this._formInputErrorActive = objectFormValidator.formInputErrorActive
+    constructor(validationConfig, formElement) {
+        this._formInputSelector = validationConfig.formInputSelector
+        this._formButtonSelector = validationConfig.formButtonSelector
+        this._formButtonDisabled = validationConfig.formButtonDisabled
+        this._formInputTypeError = validationConfig.formInputTypeError
+        this._formInputErrorActive = validationConfig.formInputErrorActive
         this._formElement = formElement
 }
 
@@ -66,5 +66,10 @@ _hasInvalidInput (inputList) {
     return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
 }); 
+}
+
+disableSubmitButton (){
+    formCardButton.classList.add(this._formButtonDisabled);
+    formCardButton.setAttribute('disabled', false)
 }
 }

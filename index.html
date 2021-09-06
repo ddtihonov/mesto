@@ -34,7 +34,7 @@
     <div class="popup popup-profile">
         <div class="popup__container">
             <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
-            <form class="form" name="user" novalidate>
+            <form class="form form__user" name="user" novalidate>
                 <h2 class="form__title">Редактировать профиль</h2>
                 <label class="form__label">
                     <input class="form__input form__input_user_name" type="text" name="name" id="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
@@ -51,7 +51,7 @@
     <div class="popup popup-cells">
         <div class="popup__container popup__container_cell_exchange">
             <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
-            <form class="form" name="card" novalidate>
+            <form class="form form__card" name="card" novalidate>
                 <h2 class="form__title">Новое место</h2>
                 <label class="form__label">
                     <input class="form__input form__input_place_name" type="text" name="title" id="title-input" placeholder="Название" minlength="2" maxlength="30" required >
@@ -88,5 +88,6 @@
     <script type="module" src="scripts/initial-cards.js"></script>
     <script type="module" src="scripts/Card.js"></script>
     <script type="module" src="scripts/FormValidator.js"></script>
+    <!--<script type="module" src="utils/utils.js"></script>-->
 </body>
 </html>

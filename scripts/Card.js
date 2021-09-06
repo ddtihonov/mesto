@@ -1,3 +1,6 @@
+const popupImage = document.querySelector('.popup-image');
+const image = document.querySelector('.popup__image');
+const imageLabel =  popupImage.querySelector('.popup__image-label')
 import openPopup from './index.js';
 export default class Card {
     constructor(name, link) {
@@ -34,11 +37,9 @@ _deleteCell (){
 }    
 
 _fillPopupImage () {
-    const popupImage = document.querySelector('.popup-image');
-    const image = document.querySelector('.popup__image');
     image.src = this._link 
     image.alt = this._name
-    popupImage.querySelector('.popup__image-label').textContent = this._name
+    imageLabel.textContent = this._name
     openPopup(popupImage);
 }
 
