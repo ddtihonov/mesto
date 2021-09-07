@@ -48,7 +48,7 @@ function openEditProfilePopup() {
     nameInput.value = profileName.textContent
     jobInput.value = profileProfession.textContent
     const popup = new Popup({
-        popupSelector: popupProfile,
+        popupSelector: popupProfile
     });
     popup.openPopup();
 }
@@ -57,31 +57,22 @@ function openEditProfilePopup() {
 function openAddCardPopup() {
     addCardForm.reset();
     const popup = new Popup({
-        popupSelector: popupСhangeCell,
+        popupSelector: popupСhangeCell
     });
     popup.openPopup();
-}
-
-function closeOverlay (evt){
-    if (evt.target.classList.contains('popup')) {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup); 
-    }
 }
 
 userChangesButton.addEventListener('click', openEditProfilePopup);
 cardChangesButton.addEventListener('click', openAddCardPopup);
 
-//закрытие всех popup
-function closePopup(element) {
-    element.classList.remove('popup_opened');
-    element.removeEventListener('click', closeOverlay);
-}
-
+//закрытие крестик
 popupCloseIcon.forEach (button => {
     button.addEventListener('click', function (evt){
         const elementClose = evt.target.closest('.popup');
-        closePopup(elementClose);
+        const popup = new Popup({
+            popupSelector: elementClose
+        });
+        popup.closePopup();
 });
 });
 
@@ -90,7 +81,10 @@ function submitProfileForm (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileProfession.textContent = jobInput.value;
-    closePopup(popupProfile);
+    const popup = new Popup({
+        popupSelector: popupProfile
+    });
+    popup.closePopup();
 }
 
 formUser.addEventListener('submit', submitProfileForm);
@@ -105,7 +99,10 @@ function submitCardForm (evt) {
     });
     plaseInput.value = plaseInput.textContent;
     linkInput.value = linkInput.textContent;
-    closePopup(popupСhangeCell);
+    const popup = new Popup({
+        popupSelector: popupСhangeCell
+    });
+    popup.closePopup();
 }
 
 
