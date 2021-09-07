@@ -1,7 +1,7 @@
 const popupImage = document.querySelector('.popup-image');
 const image = document.querySelector('.popup__image');
 const imageLabel =  popupImage.querySelector('.popup__image-label')
-import Popup from '../utils/utils.js';
+import Popup from '../utils/Popup.js';
 export default class Card {
     constructor(element, cardSelector) {
     this._name = element.name;

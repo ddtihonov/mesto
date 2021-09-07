@@ -1,7 +1,7 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js'
-import Popup from '../utils/utils.js';
+import Popup from '../utils/Popup.js';
 const validationConfig = {
     formSelector: '.form',
     formInputSelector: '.form__input',
@@ -10,8 +10,8 @@ const validationConfig = {
     formInputTypeError: 'form__input_type_error',
     formInputErrorActive: 'form__input-error_active'
 };
-const editProfileForm = document.querySelector('.form__user'); 
-const addCardForm = document.querySelector('.form__card'); 
+const errorElement = document.querySelectorAll('.form__input-error')
+const inputElement = document.querySelectorAll('.form__input')
 const userChangesButton = document.querySelector('.profile__changes-button');
 const cardChangesButton = document.querySelector('.profile__add-button');
 const popupCloseIcon = document.querySelectorAll('.popup__close-icon')
@@ -29,8 +29,6 @@ const plaseInput = formCard.elements.title;
 const linkInput = formCard.elements.image;
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
-const image = document.querySelector('.popup__image');
-
 
 renderInitialCards(...initialCards)
 
@@ -44,7 +42,8 @@ function renderInitialCards(...element){
 
 // данные popup смены пользователя
 function openEditProfilePopup() {
-    editProfileForm.reset();
+    formUser.reset();
+    clearingForm();
     nameInput.value = profileName.textContent
     jobInput.value = profileProfession.textContent
     const popup = new Popup({
@@ -53,9 +52,19 @@ function openEditProfilePopup() {
     popup.openPopup();
 }
 
+function clearingForm() {
+    errorElement.forEach((element) => {
+        element.textContent = '';
+    });
+    inputElement.forEach((element) => {
+        element.classList.remove('form__input_type_error');
+    }); 
+}
+
 // данные popup добавления карточки
 function openAddCardPopup() {
-    addCardForm.reset();
+    formCard.reset();
+    clearingForm();
     const popup = new Popup({
         popupSelector: popupСhangeCell
     });
@@ -108,8 +117,8 @@ function submitCardForm (evt) {
 
 formCard.addEventListener('submit', submitCardForm);
 
-const addCardFormValidator = new FormValidator (validationConfig, addCardForm);
+const addCardFormValidator = new FormValidator (validationConfig, formCard);
 addCardFormValidator.enableValidation()
 
-const editProfileFormValidator = new FormValidator (validationConfig, editProfileForm);
+const editProfileFormValidator = new FormValidator (validationConfig, formUser);
 editProfileFormValidator.enableValidation()

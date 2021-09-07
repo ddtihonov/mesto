@@ -1,6 +1,5 @@
 const key = "Escape";
 
-// открытие всех popup
 export default class Popup {
     constructor({ popupSelector }) {
     this._popupSelector = popupSelector;
