@@ -8,7 +8,8 @@ const validationConfig = {
     formButtonSelector: '.form__button',
     formButtonDisabled: 'form__button_disabled',
     formInputTypeError: 'form__input_type_error',
-    formInputErrorActive: 'form__input-error_active'
+    formInputErrorActive: 'form__input-error_active',
+    formInputError: '.form__input-error'
 };
 
 const userChangesButton = document.querySelector('.profile__changes-button');
@@ -28,23 +29,26 @@ const linkInput = formCard.elements.image;
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const formCardButtonImage = formCard.querySelector('.form__button-image');
-const errorElement = document.querySelectorAll('.form__input-error')
-const inputElement = document.querySelectorAll('.form__input')
 
-renderInitialCards(...initialCards)
+renderCards(...initialCards)
 
-function renderInitialCards(...element){
+function renderCards(...element) {
     element.forEach((element) => {
-        const card = new Card(element, '.cell-template');
-        const cardElement = card.generateCard();
-        tableCells.prepend(cardElement);
-    }); 
+        tableCells.prepend(createCard (element))
+    });
 }
+
+
+function createCard (element){
+    const card = new Card(element, '.cell-template');
+    const cardElement = card.generateCard();
+    return cardElement; 
+}
+
 
 // данные popup смены пользователя
 function openEditProfilePopup() {
-    formUser.reset();
-    clearingForm();
+    editProfileFormValidator.removeValidationErrors();
     nameInput.value = profileName.textContent
     jobInput.value = profileProfession.textContent
     openPopup(popupProfile);
@@ -53,17 +57,8 @@ function openEditProfilePopup() {
 // данные popup добавления карточки
 function openAddCardPopup() {
     formCard.reset();
-    clearingForm();
+    addCardFormValidator.removeValidationErrors();
     openPopup(popupСhangeCell);
-}
-
-function clearingForm() {
-    errorElement.forEach((element) => {
-        element.textContent = '';
-    });
-    inputElement.forEach((element) => {
-        element.classList.remove('form__input_type_error');
-    }); 
 }
 
 userChangesButton.addEventListener('click', openEditProfilePopup);
@@ -90,7 +85,7 @@ formUser.addEventListener('submit', submitProfileForm);
 function submitCardForm (evt) {
     evt.preventDefault();
     addCardFormValidator.disableSubmitButton (formCardButtonImage);
-    renderInitialCards({
+    renderCards({
         name: formCardInputName.value,
         link: formCardInputimage.value
     });

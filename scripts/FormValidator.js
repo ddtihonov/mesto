@@ -6,6 +6,7 @@ export default class FormValidator {
         this._formInputTypeError = validationConfig.formInputTypeError
         this._formInputErrorActive = validationConfig.formInputErrorActive
         this._formElement = formElement
+        this._formInputError = validationConfig.formInputError
 }
 
 
@@ -72,5 +73,17 @@ _hasInvalidInput (inputList) {
 disableSubmitButton (buttonElement){
     buttonElement.classList.add(this._formButtonDisabled);
     buttonElement.setAttribute('disabled', false)
+}
+
+//чистим форму при открытии
+removeValidationErrors() {
+    const errorElement = document.querySelectorAll(this._formInputError)
+    const inputElement = document.querySelectorAll(this._formInputSelector)
+    errorElement.forEach((element) => {
+        element.textContent = '';
+    });
+    inputElement.forEach((element) => {
+        element.classList.remove(this._formInputTypeError);
+    });
 }
 }
