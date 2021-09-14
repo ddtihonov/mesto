@@ -1,0 +1,23 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "___\r ### О сайте:\r Данный сайт является практической  работой в рамках курса веб-разработчик Яндекс.Практикум.\r ___\r ### Что использовалось при верстке:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddtihonov/mesto.git"
+  },
+  "author": "Dmitry Tihonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddtihonov/mesto/issues"
+  },
+  "homepage": "https://github.com/ddtihonov/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
