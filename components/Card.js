@@ -1,10 +1,11 @@
 import PopupWithImage from "./popupWithImage.js";
 
 export default class Card {
-    constructor(element, cardSelector) {
+    constructor(element, cardSelector, handleCardClick) {
     this._name = element.name;
     this._link = element.link;
-    this._cardSelector = cardSelector
+    this._cardSelector = cardSelector;
+    this.handleCardClick = handleCardClick
 }
 
 _getTemplate() {
@@ -37,10 +38,8 @@ _deleteCell (){
 }    
 
 _fillPopupImage () {
-    const popupImage = document.querySelector('.popup-image');
-    const popup = new PopupWithImage({
-        popupSelector: popupImage
-    });
+    const popupImage = '.popup-image';
+    const popup = new PopupWithImage(popupImage);
     popup.open(this._name, this._link);
 }
 
