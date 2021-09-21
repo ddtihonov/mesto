@@ -6,15 +6,14 @@
     <meta name="description" content="Спринт три Тихонова Дмитрия на Яндекс.Практикуме">
     <meta name="author" content="Тихонов Дмитрий"> 
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="images/Vector.svg" alt="Место">
+        <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Место">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="images/Kusto.jpg" alt="Кусто">
+            <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__changes-button link-aim" type="button" aria-label="смена пользователя"></button>
@@ -84,6 +83,5 @@
             </div>
         </li>
     </template>
-    <script type="module" src="pages/index.js"></script>
 </body>
 </html>
