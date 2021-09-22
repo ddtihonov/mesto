@@ -7,6 +7,10 @@ export default class FormValidator {
         this._formInputErrorActive = validationConfig.formInputErrorActive
         this._formElement = formElement
         this._formInputError = validationConfig.formInputError
+        this._buttonElement = this._formElement.querySelector(this._formButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._formInputSelector));
+        this._errorElement = this._formElement.querySelectorAll(this._formInputError);
+        this._inputElement = this._formElement.querySelectorAll(this._formInputSelector)
 }
 
 
@@ -16,13 +20,11 @@ enableValidation(){
 
 //Ищем input в форме
 _setInputListeners = () => {
-    const inputList = Array.from(this._formElement.querySelectorAll(this._formInputSelector));
-    const buttonElement = this._formElement.querySelector(this._formButtonSelector);
-    this._toggleButtonState(inputList, buttonElement);
-    inputList.forEach((inputElement) => {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState();
     });
 });
 }
@@ -53,36 +55,34 @@ _showInputError = (inputElement, errorMessage) => {
 }
 
 // поведение кнопки valid-invalid
-_toggleButtonState (inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)){
-    buttonElement.classList.add(this._formButtonDisabled);
-    buttonElement.setAttribute('disabled', false)
+_toggleButtonState () {
+    if (this._hasInvalidInput()){
+        this._buttonElement.classList.add(this._formButtonDisabled);
+        this._buttonElement.setAttribute('disabled', false)
 } else {
-    buttonElement.classList.remove(this._formButtonDisabled);
-    buttonElement.removeAttribute('disabled', true)
+    this._buttonElement.classList.remove(this._formButtonDisabled);
+    this._buttonElement.removeAttribute('disabled', true)
 } 
 }
 
-_hasInvalidInput (inputList) {
-    return inputList.some((inputElement) => {
+_hasInvalidInput () {
+    return this._inputList.some((inputElement) => {
     return !inputElement.validity.valid;
 }); 
 }
 
 
-disableSubmitButton (buttonElement){
-    buttonElement.classList.add(this._formButtonDisabled);
-    buttonElement.setAttribute('disabled', false)
+disableSubmitButton (){
+    this._buttonElement.classList.add(this._formButtonDisabled);
+    this._buttonElement.setAttribute('disabled', false)
 }
 
 //чистим форму при открытии
 removeValidationErrors() {
-    const errorElement = document.querySelectorAll(this._formInputError)
-    const inputElement = document.querySelectorAll(this._formInputSelector)
-    errorElement.forEach((element) => {
+    this._errorElement.forEach((element) => {
         element.textContent = '';
     });
-    inputElement.forEach((element) => {
+    this._inputElement.forEach((element) => {
         element.classList.remove(this._formInputTypeError);
     });
 }

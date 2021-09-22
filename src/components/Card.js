@@ -1,5 +1,3 @@
-import PopupWithImage from "./popupWithImage.js";
-
 export default class Card {
     constructor(element, cardSelector, handleCardClick) {
     this._name = element.name;
@@ -10,7 +8,7 @@ export default class Card {
 
 _getTemplate() {
     const cardElement = document
-        .querySelector('.cell-template')
+        .querySelector(this._cardSelector)
         .content
         .querySelector('.cell')
         .cloneNode(true);
@@ -37,12 +35,6 @@ _deleteCell (){
     this._element.remove();
 }    
 
-_fillPopupImage () {
-    const popupImage = '.popup-image';
-    const popup = new PopupWithImage(popupImage);
-    popup.open(this._name, this._link);
-}
-
 _setEventListeners() {
 
     this._element.querySelector('.cell__basket').addEventListener('click', () => {
@@ -54,6 +46,6 @@ _setEventListeners() {
         });
 
     this._element.querySelector('.cell__image-link').addEventListener('click', () => {
-        this._fillPopupImage();
+        this.handleCardClick();
         });
 }}
