@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, jobInput, profileName, profileProfession, formCardButtonImage, popupCardDelete} from '../utils/constants.js';
+import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, jobInput, profileName, profileProfession, formCardButtonImage, popupCardDelete, popupAvatar, avatarChangesLink, avatarImage, formAvatar} from '../utils/constants.js';
 
 // копия PopupWithImage 
 const popupImageOpen = new PopupWithImage(popupImage);
@@ -15,7 +15,8 @@ const popupImageOpen = new PopupWithImage(popupImage);
 // копия UserInfo
 const userInfo = new UserInfo({
     userInfoName: profileName,
-    userInfoProfession: profileProfession
+    userInfoProfession: profileProfession,
+    userAvatar: avatarImage
 });
 
 // Разметка карточки
@@ -63,9 +64,21 @@ userChangesButton.addEventListener('click', () => {
     newWithForm.open();
 });
 
+// обработчик данных popup смены аватара
+avatarChangesLink.addEventListener('click', () => {
+    changeAvatarFormValidator.removeValidationErrors();
+    newAvatar.open();
+});
+
+// обработка данных при закрытии формы смены аватара
+const newAvatar = new PopupWithForm(popupAvatar, (data) => {
+    userInfo.setUserInfo(data);
+    newAvatar.close();
+});
+
 // обработка данных при закрытии формы смены пользователя
 const newWithForm = new PopupWithForm(popupProfile, (data) => {
-    userInfo.setUserInfo(data);
+    userInfo.setUserInfo({avatar: data.avatar});
     newWithForm.close();
 });
 
@@ -76,5 +89,9 @@ addCardFormValidator.enableValidation();
 //форма редактирования профиля
 const editProfileFormValidator = new FormValidator (validationConfig, formUser);
 editProfileFormValidator.enableValidation();
+
+//форма смены аватара
+const changeAvatarFormValidator = new FormValidator (validationConfig, formAvatar);
+changeAvatarFormValidator.enableValidation();
 
 /*popupCardDelete.addEventListener('click', () => {*/

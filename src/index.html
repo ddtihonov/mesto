@@ -13,9 +13,7 @@
     </header>
     <main class="content">
         <section class="profile">
-            <div class="profile__image-link">
-                <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Кусто">
-            </div>
+            <a class="profile__image-link"><img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Кусто"></a>
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__changes-button link-aim" type="button" aria-label="смена пользователя"></button>
@@ -66,6 +64,19 @@
             </form>
         </div> 
     </div>
+    <div class="popup popup-avatar">
+        <div class="popup__container">
+            <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
+            <form class="form" name="avatar" novalidate>
+                <h2 class="form__title">Обновить аватар</h2>
+                <label class="form__label form__label_avatar">
+                    <input class="form__input form__input_place_avatar" type="url" name="avatar" id="avatar-input" placeholder="Ссылка на фотографию" required>
+                    <span class="form__input-error avatar-input-error"></span>
+                </label>
+                <button class="form__button form__button-avatar" type="submit">Сохранить</button>
+            </form>
+        </div> 
+    </div>
     <div class="popup popup-image">
         <div class="popup__container">
             <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
@@ -88,7 +99,11 @@
             <a class="cell__image-link"  href="#"><img class="cell__image" src="#" alt=""></a>
             <div class="cell__info">
                 <h2 class="cell__caption"></h2>
-                <button class="cell__heart" type="button" aria-label="лайк"></button>
+                <div class="cell__like">
+                    <button class="cell__heart" type="button" aria-label="лайк"></button>
+                    <p class="cell__score-likes">0</p>
+                </div>
+                
             </div>
         </li>
     </template>
