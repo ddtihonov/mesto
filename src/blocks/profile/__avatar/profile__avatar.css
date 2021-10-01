@@ -4,6 +4,11 @@
     margin-right: 30px;
 }
 
+.profile__avatar:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 @media (max-width: 768px){
     .profile__avatar{
         margin-right: 0;

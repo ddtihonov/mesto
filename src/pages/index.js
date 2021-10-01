@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, jobInput, profileName, profileProfession, formCardButtonImage} from '../utils/constants.js';
+import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, jobInput, profileName, profileProfession, formCardButtonImage, popupCardDelete} from '../utils/constants.js';
 
 // копия PopupWithImage 
 const popupImageOpen = new PopupWithImage(popupImage);
@@ -76,3 +76,5 @@ addCardFormValidator.enableValidation();
 //форма редактирования профиля
 const editProfileFormValidator = new FormValidator (validationConfig, formUser);
 editProfileFormValidator.enableValidation();
+
+/*popupCardDelete.addEventListener('click', () => {*/

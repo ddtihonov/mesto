@@ -11,6 +11,7 @@ export const validationConfig = {
 export const popupProfile = '.popup-profile';
 export const popupСhangeCell = '.popup-cells';
 export const popupImage = '.popup-image';
+export const popupCardDelete = '.popup-delete'
 
 // кнопки открытия форм
 export const userChangesButton = document.querySelector('.profile__changes-button');

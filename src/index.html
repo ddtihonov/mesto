@@ -13,7 +13,9 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Кусто">
+            <div class="profile__image-link">
+                <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Кусто">
+            </div>
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__changes-button link-aim" type="button" aria-label="смена пользователя"></button>
@@ -71,6 +73,13 @@
             <img class = "popup__image" alt="" src="#">
             <figcaption class="popup__image-label"></figcaption>
             </figure>
+        </div> 
+    </div>
+    <div class="popup popup-delete">
+        <div class="popup__container">
+            <button class="popup__close-icon link-aim" type="button" aria-label="закрыть"></button>
+            <h2 class="form__title">Вы уверены?</h2>
+            <button class="form__button" type="button">Да</button>
         </div> 
     </div>
     <template class="cell-template">
