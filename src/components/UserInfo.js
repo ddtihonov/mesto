@@ -10,14 +10,14 @@ export default class UserInfo {
     return {
         user: this._name.textContent,
         profession: this._profession.textContent,
-        avatar: this._avatar
+        avatar: this._avatar.src
     }
     }
 
     //новые данные пользователя для добавления на страницу
-    setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._profession.textContent = data.job;
-    this._avatar.src = data.avatar
+    setUserInfo({name, job, avatar}) {
+    this._name.textContent = name;
+    this._profession.textContent = job;
+    this._avatar.src = avatar
     }
 } 

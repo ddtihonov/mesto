@@ -7,10 +7,14 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, jobInput, profileName, profileProfession, formCardButtonImage, popupCardDelete, popupAvatar, avatarChangesLink, avatarImage, formAvatar} from '../utils/constants.js';
 
 // копия PopupWithImage 
 const popupImageOpen = new PopupWithImage(popupImage);
+
+//копия PopupWithConfirmation
+const cardDeletePopup = new PopupWithConfirmation(popupCardDelete)
 
 // копия UserInfo
 const userInfo = new UserInfo({
@@ -72,13 +76,17 @@ avatarChangesLink.addEventListener('click', () => {
 
 // обработка данных при закрытии формы смены аватара
 const newAvatar = new PopupWithForm(popupAvatar, (data) => {
-    userInfo.setUserInfo(data);
+    userInfo.setUserInfo({
+        name: data.name,
+        job: data.job
+    });
     newAvatar.close();
 });
 
 // обработка данных при закрытии формы смены пользователя
 const newWithForm = new PopupWithForm(popupProfile, (data) => {
-    userInfo.setUserInfo({avatar: data.avatar});
+    userInfo.setUserInfo({
+        avatar: data.avatar});
     newWithForm.close();
 });
 
@@ -93,5 +101,3 @@ editProfileFormValidator.enableValidation();
 //форма смены аватара
 const changeAvatarFormValidator = new FormValidator (validationConfig, formAvatar);
 changeAvatarFormValidator.enableValidation();
-
-/*popupCardDelete.addEventListener('click', () => {*/
