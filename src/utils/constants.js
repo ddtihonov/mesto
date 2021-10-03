@@ -26,10 +26,10 @@ export const formAvatar = document.forms.avatar;
 export const formCardInputName = formCard.querySelector('.form__input_place_name');
 export const formCardInputImage = formCard.querySelector('.form__input_place_image');
 export const nameInput = formUser.elements.name;
-export const jobInput = formUser.elements.job;
+export const aboutInput = formUser.elements.about;
 
 
 export const profileName = document.querySelector('.profile__name');
-export const profileProfession = document.querySelector('.profile__profession');
+export const profileAbout = document.querySelector('.profile__profession');
 export const formCardButtonImage = formCard.querySelector('.form__button-image');
 export const avatarImage = document.querySelector('.profile__avatar');

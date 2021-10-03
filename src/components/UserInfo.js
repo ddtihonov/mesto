@@ -1,7 +1,7 @@
 export default class UserInfo {
-    constructor({ userInfoName, userInfoProfession, userAvatar}) {
+    constructor({ userInfoName, userInfoAbout, userAvatar}) {
     this._name = userInfoName;
-    this._profession = userInfoProfession;
+    this._about = userInfoAbout;
     this._avatar = userAvatar
     }
 
@@ -9,15 +9,15 @@ export default class UserInfo {
     getUserInfo() {
     return {
         user: this._name.textContent,
-        profession: this._profession.textContent,
+        about: this._about.textContent,
         avatar: this._avatar.src
     }
     }
 
     //новые данные пользователя для добавления на страницу
-    setUserInfo({name, job, avatar}) {
+    setUserInfo({name, about, avatar}) {   
     this._name.textContent = name;
-    this._profession.textContent = job;
+    this._about.textContent = about;
     this._avatar.src = avatar
     }
 } 
