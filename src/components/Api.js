@@ -34,7 +34,7 @@ export default class Api {
             .then(this._checkResponse);
     }
 
-    getCards() {
+    getInitialCards() {
         return fetch(`${this.baseUrl}/cards`, {
             headers: this.headers
         })
@@ -51,12 +51,20 @@ export default class Api {
             })
         })
             .then(this._checkResponse);
-    };
+    }
+
+    deleteCard(id) {
+        return fetch(`${this.baseUrl}/cards/${id}`, {
+            method: 'DELETE',
+            headers: this.headers
+        })
+            .then(this._checkResponse);
+    }
 
     _checkResponse(res) {
         if (res.ok) {
             return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
-    };
-};
+    }
+}

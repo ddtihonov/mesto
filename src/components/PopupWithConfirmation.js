@@ -13,4 +13,8 @@ export default class PopupWithConfirmation extends Popup {
         this._handleFormSubmit();
         });
     }
+
+    setSubmitAction(submitAction) {
+        this._handleSubmiteCallback = submitAction;
+    }
 }

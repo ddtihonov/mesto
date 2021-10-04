@@ -35,6 +35,7 @@
 @import url(../blocks/cell/__image-link/cell__image-link.css);
 @import url(../blocks/cell/__like/cell__like.css);
 @import url(../blocks/cell/__score-likes/cell__score-likes.css);
+@import url(../blocks/cell/__basket/_opened/cell__basket_opened.css);
 
 /*Подключаем footer*/
 @import url(../blocks/footer/footer.css);

@@ -15,9 +15,15 @@ export default class UserInfo {
     }
 
     //новые данные пользователя для добавления на страницу
-    setUserInfo({name, about, avatar}) {   
-    this._name.textContent = name;
-    this._about.textContent = about;
-    this._avatar.src = avatar
+    setUserInfo({name, about, avatar}) {
+        if(name) {
+            this._name.textContent = name;
+        }
+        if(about)  {
+            this._about.textContent = about;
+        }
+        if(avatar) {
+            this._avatar.src = avatar
+        }
     }
 } 
