@@ -1,8 +1,8 @@
 export default class Card {
-    constructor(element, cardSelector, UserId, {handleCardClick, handleDeleteCard}, handleLikeIcon) {
+    constructor(element, cardSelector, UserId, {handleCardClick, handleDeleteCard, handleLikeIcon}) {
         this._name = element.name;
         this._link = element.link;
-        this._like = element.likes;
+        this._likes = element.likes;
         this._ownerId = element.owner._id;
         this._UserId = UserId;
         this._cardSelector = cardSelector;
@@ -12,10 +12,23 @@ export default class Card {
 }
 
 // Отображение колличества лайков
-displayQuantityLikes(element) {
+showNumberLikes(element) {
     const likeIcon = this._element.querySelector('.cell__heart');
-    const quantityLikes = this._element.querySelector('.cell__score-likes');
-    quantityLikes.textContent = element.likes.length;
+    const scoreLikes = this._element.querySelector('.cell__score-likes');
+    this._isLiked = element.likes.filter((element) => {
+        return element._id === this._UserId;
+    }).length > 0;
+        if(this._isLiked) {
+        likeIcon.classList.add('cell__heart_black');
+        scoreLikes.textContent = element.likes.length;
+    } else {
+        likeIcon.classList.remove('cell__heart_black');
+        scoreLikes.textContent = element.likes.length;
+    }
+};
+
+lookLike() {
+    return this._isLiked;
 };
 
 _getTemplate() {
@@ -40,10 +53,6 @@ generateCard() {
     return this._element; 
 }
 
-_like () {
-    this._element.querySelector('.cell__heart').classList.toggle('cell__heart_black');
-}
-
 _deleteCell (){
     this._element.remove();
     this._element = null
@@ -62,7 +71,7 @@ _setEventListeners() {
         });
 
     this._element.querySelector('.cell__heart').addEventListener('click', () => {
-        this._like();
+        this._handleLikeIcon();
         });
 
     this._element.querySelector('.cell__image-link').addEventListener('click', () => {

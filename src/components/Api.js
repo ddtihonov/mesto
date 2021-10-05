@@ -8,7 +8,7 @@ export default class Api {
         return fetch(`${this.baseUrl}/users/me`, {
             headers: this.headers
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
 
     setUserInfo(data) {
@@ -20,7 +20,7 @@ export default class Api {
                 about: data.about
             })
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
 
     addAvatar(data) {
@@ -31,14 +31,14 @@ export default class Api {
                 avatar: data.avatar
             })
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
 
     getInitialCards() {
         return fetch(`${this.baseUrl}/cards`, {
             headers: this.headers
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
     
     addCard(element) {
@@ -50,7 +50,7 @@ export default class Api {
                 link: element.image
             })
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
 
     deleteCard(id) {
@@ -58,10 +58,26 @@ export default class Api {
             method: 'DELETE',
             headers: this.headers
         })
-            .then(this._checkResponse);
+            .then(this._checkError);
     }
 
-    _checkResponse(res) {
+    addLike(id) {
+        return fetch(`${this.baseUrl}/cards/likes/${id}`, {
+            method: 'PUT',
+            headers: this.headers
+        })
+            .then(this._checkError);
+    }
+    
+    deleteLike(id) {
+        return fetch(`${this.baseUrl}/cards/likes/${id}`, {
+            method: 'DELETE',
+            headers: this.headers
+        })
+            .then(this._checkError);
+    };
+
+    _checkError(res) {
         if (res.ok) {
             return res.json();
         }

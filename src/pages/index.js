@@ -9,8 +9,10 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import Api from '../components/Api.js';
 import { validationConfig, popupProfile, popupСhangeCell, popupImage, userChangesButton, cardChangesButton, formCard, formUser, formCardInputName, formCardInputImage, nameInput, aboutInput, profileName, profileAbout, formCardButtonImage, popupCardDelete, popupAvatar, avatarChangesLink, avatarImage, formAvatar} from '../utils/constants.js';
-export let UserId = null;
-export const api = new Api({
+
+let UserId = null;
+
+const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-28',
 headers: {
     authorization: '14d1d8a7-1fa6-4dd5-b9aa-bce836d4ee4b',
@@ -38,7 +40,7 @@ function createCard (element, UserId) {
         popupImageOpen.open(element.name, element.link);
         },
         handleDeleteCard: () => {
-            cardDeletePopup.setSubmitAction(() => {
+            cardDeletePopup.submitRemoval(() => {
             api.deleteCard(element._id)
                 .then(() => {
                 card.deleteCell();
@@ -46,11 +48,30 @@ function createCard (element, UserId) {
             });
         });
         cardDeletePopup.open();
+        },
+        handleLikeIcon: () => {
+            if(!card.lookLike()) {
+                api.addLike(element._id)
+                .then((element) => {
+                    card.showNumberLikes(element);
+                })
+                .catch((err) => {
+                    console.log(`Ошибка: ${err}`);
+                });
+                } 
+            else {
+                api.deleteLike(element._id)
+                .then((element) => {
+                card.showNumberLikes(element);
+                })
+                .catch((err) => {
+                    console.log(`Ошибка: ${err}`);
+                });
+            };
         }
     });
     const cardElement = card.generateCard();
-    card.displayQuantityLikes(element);
-    //console.log(UserId)
+    card.showNumberLikes(element);
     return cardElement
 }
 
@@ -72,7 +93,7 @@ const newCard = new PopupWithForm(popupСhangeCell, {
             newCard.close();
         })
         .catch((err) => {
-            console.log(`Attention! ${err}`);
+            console.log(`Ошибка: ${err}`);
         })
         .finally(() => {
             newCard.renderLoading(false);
@@ -115,7 +136,7 @@ const newAvatar = new PopupWithForm(popupAvatar, {
             newAvatar.close();
         })
         .catch((err) => {
-            console.log(`Attention! ${err}`);
+            console.log(`Ошибка: ${err}`);
         })
         .finally(() => {
             newAvatar.renderLoading(false);
@@ -139,7 +160,7 @@ const newWithForm = new PopupWithForm(popupProfile, {
             newWithForm.close();
         })
         .catch((err) => {
-            console.log(`Attention! ${err}`);
+            console.log(`Ошибка: ${err}`);
         })
         .finally(() => {
             newWithForm.renderLoading(false);
@@ -170,5 +191,5 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         cardsList.renderCards(cardData);
     })
     .catch((err) => {
-    console.log(`Attention! ${err}`);
+    console.log(`Ошибка: ${err}`);
 });
