@@ -40,7 +40,7 @@ function createCard (element, UserId) {
         popupImageOpen.open(element.name, element.link);
         },
         processingDeleteCard: () => {
-            cardDeletePopup.submitRemoval(() => {
+        cardDeletePopup.submitRemoval(() => {
             api.deleteCard(element._id)
                 .then(() => {
                 card.deleteCell();

@@ -12,10 +12,9 @@ export default class PopupWithConfirmation extends Popup {
         evt.preventDefault();
         this._handleFormSubmit();
         });
-        console.log(this._formElement)////////
     }
 
-    /*submitRemoval(submitAction) {
+    submitRemoval(submitAction) {
         this._handleFormSubmit = submitAction;
-    }*/
+    }
 }

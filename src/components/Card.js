@@ -53,7 +53,7 @@ generateCard() {
     return this._element; 
 }
 
-_deleteCell (){
+deleteCell (){
     this._element.remove();
 }
 
