@@ -36,10 +36,10 @@ const userInfo = new UserInfo({
 // Разметка карточки
 function createCard (element, UserId) {
     const card = new Card(element, '.cell-template', UserId, {
-        handleCardClick:() =>{
+        processingClickCard:() =>{
         popupImageOpen.open(element.name, element.link);
         },
-        handleDeleteCard: () => {
+        processingDeleteCard: () => {
             cardDeletePopup.submitRemoval(() => {
             api.deleteCard(element._id)
                 .then(() => {
@@ -49,7 +49,7 @@ function createCard (element, UserId) {
         });
         cardDeletePopup.open();
         },
-        handleLikeIcon: () => {
+        processinglike: () => {
             if(!card.lookLike()) {
                 api.addLike(element._id)
                 .then((element) => {

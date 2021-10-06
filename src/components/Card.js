@@ -1,14 +1,14 @@
 export default class Card {
-    constructor(element, cardSelector, UserId, {handleCardClick, handleDeleteCard, handleLikeIcon}) {
+    constructor(element, cardSelector, UserId, {processingClickCard, processingDeleteCard, processinglike}) {
         this._name = element.name;
         this._link = element.link;
         this._likes = element.likes;
         this._ownerId = element.owner._id;
         this._UserId = UserId;
         this._cardSelector = cardSelector;
-        this._handleCardClick = handleCardClick;
-        this._handleDeleteCard = handleDeleteCard;
-        this._handleLikeIcon = handleLikeIcon;
+        this._processingClickCard = processingClickCard;
+        this._processingDeleteCard = processingDeleteCard;
+        this._processinglike = processinglike;
 }
 
 // Отображение колличества лайков
@@ -55,7 +55,6 @@ generateCard() {
 
 _deleteCell (){
     this._element.remove();
-    this._element = null
 }
 
 _showElementDelete () {
@@ -67,14 +66,14 @@ _showElementDelete () {
 _setEventListeners() {
 
     this._element.querySelector('.cell__basket').addEventListener('click', () => {
-        this._handleDeleteCard();
+        this._processingDeleteCard();
         });
 
     this._element.querySelector('.cell__heart').addEventListener('click', () => {
-        this._handleLikeIcon();
+        this._processinglike();
         });
 
     this._element.querySelector('.cell__image-link').addEventListener('click', () => {
-        this._handleCardClick();
+        this._processingClickCard();
         });
 }}
