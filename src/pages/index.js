@@ -43,8 +43,11 @@ function createCard (element, UserId) {
         cardDeletePopup.submitRemoval(() => {
             api.deleteCard(element._id)
                 .then(() => {
-                card.deleteCell();
-                cardDeletePopup.close();
+                    card.deleteCell();
+                    cardDeletePopup.close(); 
+            })
+                .catch((err) => {
+                    console.log(`Ошибка: ${err}`);
             });
         });
         cardDeletePopup.open();
